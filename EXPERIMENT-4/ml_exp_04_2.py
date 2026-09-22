@@ -18,6 +18,10 @@ model.fit(X_train, y_train)
 
 print("Intercept:", model.intercept_)
 print("Coefficients:", model.coef_)
-new_house = pd.DataFrame([[2200, 3]], columns=["area_in_sqft", "bedrooms"])
+new_house ={
+    "area_in_sqft":[2200],
+    "bedrooms": [3]
+}
+new_house=pd.DataFrame(new_house)
 predicted_price = model.predict(new_house)
 print("Predicted Price:", predicted_price[0])
