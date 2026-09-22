@@ -5,9 +5,9 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 import matplotlib.pyplot as plt
 
-df = pd.read_csv("real_estate.csv") 
+df = pd.read_csv("real_estate_dataset.csv") 
 
-X = df[["area_in_sqft"]].values
+X = df[["area_sqft"]].values
 y = df["price"].values
 
 X_train, X_test, y_train, y_test = train_test_split( X, y, test_size=0.2, random_state=42)
@@ -25,14 +25,14 @@ r2 = r2_score(y_test, y_pred)
 print("Slope (b1):", model.coef_[0])
 print("Intercept (b0):", model.intercept_)
 print("\n---Evaluation Metrics---")
-print(f"MAE : {mae:.2f}")
-print(f"MSE : {mse:.2f}")
-print(f"RMSE : {rmse:.2f}")
-print(f"R2 : {r2:.2f}")
+print(f"MAE: {mae:.2f}")
+print(f"MSE: {mse:.2f}")
+print(f"RMSE: {rmse:.2f}")
+print(f"R2: {r2:.2f}")
 
 
 new_area = np.array([[3000]])
-print("Predicted price for 3000 sqft: Rs.", model.predict(new_area)[0])
+print("Predicted price for 3000 sqft: USD$", model.predict(new_area)[0])
 
 
 plt.figure(figsize=(7,5))
